@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Transformer Überblick</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: #121b2d;
+      --card: #1a2945;
+      --text: #edf4ff;
+      --muted: #b3c4dd;
+      --accent: #7dd3fc;
+      --accent-2: #86efac;
+      --button: #3b82f6;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(180deg, #0b1020, #111d32);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 900px;
+      margin: 50px auto;
+      padding: 24px;
+    }
+    .card {
+      background: rgba(18,27,45,0.9);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+      padding: 28px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    }
+    h1 {
+      margin-top: 0;
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--accent);
+    }
+    p, li {
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+    .btn {
+      display: inline-block;
+      background: var(--button);
+      color: white;
+      border: 0;
+      border-radius: 10px;
+      padding: 12px 20px;
+      font-size: 1rem;
+      cursor: pointer;
+      text-decoration: none;
+      margin-top: 8px;
+    }
+    .btn:hover { opacity: 0.95; }
+    .hidden {
+      display: none;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .badge {
+      background: rgba(134, 239, 172, 0.1);
+      border: 1px solid rgba(134, 239, 172, 0.35);
+      color: var(--accent-2);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: bold;
+    }
+    a {
+      color: var(--accent);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <h1>Transformer</h1>
+      <p>
+        Das Transformer-Modell wurde in dem Paper <strong>„Attention Is All You Need“</strong>
+        vorgestellt. Es ersetzt Rekurrenz und Convolution durch Aufmerksamkeit.
+      </p>
+
+      <div class="badge-row">
+        <span class="badge">Self-Attention</span>
+        <span class="badge">Encoder</span>
+        <span class="badge">Decoder</span>
+        <span class="badge">LLMs</span>
+      </div>
+
+      <button class="btn" id="toggleBtn" type="button">Mehr erfahren</button>
+
+      <div id="moreInfo" class="hidden">
+        <h2>Warum ist das wichtig?</h2>
+        <p>
+          Transformer erlauben parallele Verarbeitung von Tokenfolgen und haben moderne
+          Sprachmodelle wie GPT und BERT möglich gemacht.
+        </p>
+
+        <h2>Wichtige Ideen</h2>
+        <ul>
+          <li>Attention misst die Wichtigkeit von Wörtern im Satz.</li>
+          <li>Multi-Head Attention betrachtet verschiedene Beziehungen gleichzeitig.</li>
+          <li>Positional Encoding beschreibt die Reihenfolge der Wörter.</li>
+          <li>Residuale Verbindungen helfen beim Training tiefer Netzwerke.</li>
+        </ul>
+
+        <p>
+          Original-Paper: 
+          <a href="https://arxiv.org/abs/1709.00440" target="_blank" rel="noopener">
+            arXiv:1709.00440
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const toggleBtn = document.getElementById('toggleBtn');
+    const moreInfo = document.getElementById('moreInfo');
+
+    toggleBtn.addEventListener('click', () => {
+      const hidden = moreInfo.classList.toggle('hidden');
+      toggleBtn.textContent = hidden ? 'Mehr erfahren' : 'Weniger anzeigen';
+    });
+  </script>
+</body>
+</html>
